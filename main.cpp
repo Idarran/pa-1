@@ -13,9 +13,10 @@ LRESULT CALLBACK wnd_proc(HWND hwnd, UINT message, WPARAM wp, LPARAM lp)
 	{
 	case WM_COMMAND:
 		if ((HWND)lp == g_przycisk)
+		{
 			SetWindowText(g_text, "BOOM!");
-		Sleep(100);
-		MessageBox(hwnd, "You've just annihilated planet Earth", "Congratulations!", MB_OK | MB_ICONWARNING);
+			MessageBox(hwnd, "You've just annihilated planet Earth!", "Congratulations!", MB_OK | MB_ICONWARNING);
+		}
 		break;
 
 	case WM_CLOSE:
@@ -57,15 +58,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 		NULL, NULL, hInstance, NULL);
 	if (NULL == window) return -1; //sprawdzenie, czy siê uda³o
 
-	//tworzenie przycisku
+								   //tworzenie przycisku
 	g_przycisk = CreateWindowEx(WS_EX_CLIENTEDGE, "BUTTON", "BigRedBttn",
-		WS_CHILD | WS_VISIBLE, 
-		370, 300,200, 30, window, NULL, hInstance, NULL);
+		WS_CHILD | WS_VISIBLE,
+		370, 300, 200, 30, window, NULL, hInstance, NULL);
 
 	//tworzenie pola tekstowego
 	g_text = CreateWindowEx(WS_EX_CLIENTEDGE, "EDIT", NULL,
 		WS_CHILD | WS_VISIBLE | WS_BORDER,
-		400, 200, 150, 30, window, NULL, hInstance, NULL);
+		370, 250, 200, 30, window, NULL, hInstance, NULL);
 
 
 	//pêtla obs³ugi komunikatów
