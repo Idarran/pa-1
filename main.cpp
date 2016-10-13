@@ -13,8 +13,9 @@ LRESULT CALLBACK wnd_proc(HWND hwnd, UINT message, WPARAM wp, LPARAM lp)
 	{
 	case WM_COMMAND:
 		if ((HWND)lp == g_przycisk)
-			//MessageBox(hwnd, "Insert kremówka", "Komunikat", MB_OK | MB_ICONERROR);
-			SetWindowText(g_text, "TEXT 123");
+			SetWindowText(g_text, "BOOM!");
+		Sleep(100);
+		MessageBox(hwnd, "You've just annihilated planet Earth", "Congratulations!", MB_OK | MB_ICONWARNING);
 		break;
 
 	case WM_CLOSE:
@@ -50,7 +51,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 	RegisterClassEx(&wc);
 
 	//tworzenie okna...
-	HWND window = CreateWindowEx(0, "NAZWA_KLASY", "Okno na œwiat",
+	HWND window = CreateWindowEx(0, "NAZWA_KLASY", "Through the window!",
 		WS_OVERLAPPEDWINDOW | WS_VISIBLE,
 		CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
 		NULL, NULL, hInstance, NULL);
